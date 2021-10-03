@@ -53,7 +53,13 @@ class MainActivity : AppCompatActivity() {
         }
         etCelebrity = findViewById(R.id.etCelebrity)
         btDetails = findViewById(R.id.btDetails)
-        btDetails.setOnClickListener {  }
+        btDetails.setOnClickListener {
+            if(etCelebrity.text.isNotEmpty()){
+                updateCelebrity()
+            }else{
+                Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG).show()
+            }
+        }
 
         progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Please Wait")
@@ -78,5 +84,20 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "Unable to get data", Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    private fun updateCelebrity(){
+        var celebrityID = 0
+        for(celebrity in celebrities){
+            if(etCelebrity.text.toString().capitalize() == celebrity.name){
+                celebrityID = celebrity.pk
+            }
+        }
+
+        intent = Intent(applicationContext, UpdateDeleteCelebrity::class.java)
+
+
+        intent.putExtra("celebrityID", celebrityID)
+        startActivity(intent)
     }
 }

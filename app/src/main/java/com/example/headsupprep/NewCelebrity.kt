@@ -63,10 +63,15 @@ class NewCelebrity : AppCompatActivity() {
 
         apiInterface.addCelebrity(
             Celebrity(
-                etName.text.toString(),
+                // This only takes care of the first name
+                // If Michael Jordan exists, Michael jordan can still be added
+                // Can you find a way to fix this?
+                etName.text.toString().capitalize(),
                 etTaboo1.text.toString(),
                 etTaboo2.text.toString(),
-                etTaboo3.text.toString())
+                etTaboo3.text.toString(),
+                0
+            )
         ).enqueue(object: Callback<Celebrity> {
             override fun onResponse(call: Call<Celebrity>, response: Response<Celebrity>) {
                 progressDialog.dismiss()

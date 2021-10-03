@@ -16,10 +16,14 @@ class Celebrity{
     @SerializedName("taboo3")
     var taboo3: String = ""
 
-    constructor(name: String, taboo1: String, taboo2: String, taboo3: String) {
+    @SerializedName("pk")
+    var pk: Int = 0
+
+    constructor(name: String, taboo1: String, taboo2: String, taboo3: String, pk: Int) {
         this.name = name
         this.taboo1 = taboo1
         this.taboo2 = taboo2
         this.taboo3 = taboo3
+        this.pk = pk
     }
 }

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HeadsUpPrep">
         <activity
+            android:name=".UpdateDeleteCelebrity"
+            android:exported="true" />
+        <activity
             android:name=".NewCelebrity"
             android:exported="true" />
         <activity
