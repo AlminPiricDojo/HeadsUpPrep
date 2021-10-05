@@ -4,7 +4,6 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -91,13 +90,12 @@ class MainActivity : AppCompatActivity() {
         for(celebrity in celebrities){
             if(etCelebrity.text.toString().capitalize() == celebrity.name){
                 celebrityID = celebrity.pk
+                intent = Intent(applicationContext, UpdateDeleteCelebrity::class.java)
+                intent.putExtra("celebrityID", celebrityID)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this, "${etCelebrity.text.toString().capitalize()} not found", Toast.LENGTH_LONG).show()
             }
         }
-
-        intent = Intent(applicationContext, UpdateDeleteCelebrity::class.java)
-
-
-        intent.putExtra("celebrityID", celebrityID)
-        startActivity(intent)
     }
 }
